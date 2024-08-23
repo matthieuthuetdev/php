@@ -19,6 +19,9 @@ echo getMulti(4.8, 9.2) . "\n";
 
 function getDiv(float $firsNunber, float $secondNumber)
 {
+    if($secondNumber == 0){
+        return 0;
+    }
     return round($firsNunber / $secondNumber,2);
 }
 echo getDiv(4.8, 9.2) . "\n";
