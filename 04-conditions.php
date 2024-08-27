@@ -16,18 +16,21 @@ function getRetired(int $age): string
         return "vous êtes a la retraites depuis " . $age - 60 . " ans";
     }
 }
+
 function getMax(float $firstNumber, float $secondNumber, float $seirdNumber): float
 {
     if ($firstNumber == $secondNumber || $secondNumber == $seirdNumber || $firstNumber == $seirdNumber) {
-        return 0;
+        $nMax =0;
     } elseif ($firstNumber > $secondNumber && $firstNumber > $seirdNumber) {
-        return $firstNumber;
+        $nMax = $firstNumber;
     } elseif ($secondNumber > $firstNumber && $secondNumber > $seirdNumber) {
-        return $secondNumber;
+        $nMax = $secondNumber;
     } else {
-        return $seirdNumber;
+        $nMax = $seirdNumber;
     }
+    return round($nMax,2);
 }
+
 function testGetMax($n)
 {
     for ($i = 0; $i < $n; $i++) {
