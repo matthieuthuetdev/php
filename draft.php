@@ -1,15 +1,14 @@
 <?php
-$namesnames = ['Joe', 'Jack', 'Léa', 'Zoé', 'Néo'];
-
-function firstItem(array $tab): ?string{
-$premierElement = $tab[0];
-return " Le premier element est : $premierElement.";
+function sortItems(array $table)  {
+ 
+    if (empty ($table)){
+        return [];
+    } else {
+        arsort($table);
+        return $table;
+    }
+    echo $table;
 }
-if (var_dump(firstItem($names))) {
-var_dump(firstItem($names));
-} else {
-echo PHP_EOL;
-echo firstItem($names);
-echo PHP_EOL;
-
-}
+$dev = ["steve","alex","matthieu","habib"];
+$content = json_encode(sortItems($dev,true));
+file_put_contents("result.json",$content);
