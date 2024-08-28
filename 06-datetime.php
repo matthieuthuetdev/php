@@ -1,7 +1,10 @@
 <?php
-function getToday(){
-    $date = new DateTime(05
-    echo $date;
-    return $date;
+function getToday(): string
+{
+    $date = new DateTime();
+    $today = $date->format("d/m/y");
+    echo $today;
+    return $today;
 }
+
 getToday();
