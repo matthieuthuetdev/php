@@ -1,18 +1,25 @@
 <?php
-function getToday(): string
+require "./function.php";
+function getToday()
 {
     $date = new DateTime();
     $today = $date->format("d/m/y");
     echo $today;
     return $today;
 }
-function getTimeLeft(string $eventDate):string{
+function getTimeLeft(string $eventDate)
+{
     $date = new DateTime($eventDate);
     $today = new DateTime();
-    if($today < $date){
-        $date - $today;
+        $interval = $today->diff($date, false);
+        return $interval;
     }
-    
-}
+
+
+
+
+
+
+
 getToday();
-getTimeLeft("01-10-2005");
+varDisplay(getTimeLeft("01-8-2024"));
