@@ -1,6 +1,6 @@
 <?php
 require "./function.php";
-function getToday()
+function getToday():string
 {
     $date = new DateTime();
     $today = $date->format("d/m/y");
@@ -11,15 +11,17 @@ function getTimeLeft(string $eventDate)
 {
     $date = new DateTime($eventDate);
     $today = new DateTime();
-        $interval = $today->diff($date, false);
-        return $interval;
+    $interval = $today->diff($date);
+    if ($interval->invert == 1 && $interval->days == 0){
+        return "Aujourd'hui";
+    }elseif($interval->invert == 1 && $interval->days != 0){
+        return "Évènement passé";
+    }else{
+        
     }
-
-
-
-
+}
 
 
 
 getToday();
-varDisplay(getTimeLeft("01-8-2024"));
+var_dump(getTimeLeft("02-10-2024"));
