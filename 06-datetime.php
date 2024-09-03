@@ -32,7 +32,6 @@ function getTimeLeft(string $eventDate)
             $result .= $interval->d > 1 ? $interval->d . " jours " : $interval->d . " jour ";
         }
         return $interval;
-
     }
 }
 

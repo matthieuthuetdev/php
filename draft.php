@@ -1,14 +1,25 @@
 <?php
-function sortItems(array $table)  {
- 
-    if (empty ($table)){
-        return [];
+function getTimeLeft(string $userDate): string
+{
+    $myUserDate = new datetime("$userDate");
+    $test = $myUserDate->format("Y-m-d");
+    echo $test;
+    $date = new datetime("now");
+
+    if ($myUserDate < $date) {
+        return "Évènement passé";
+    } elseif ($myUserDate === $date) {
+        return "Aujourd'hui";
     } else {
-        arsort($table);
-        return $table;
+        return "Évenement futur";
     }
-    echo $table;
 }
-$dev = ["steve","alex","matthieu","habib"];
-$content = json_encode(sortItems($dev,true));
-file_put_contents("result.json",$content);
+
+
+
+
+echo getTimeLeft('2022-04-22');
+echo PHP_EOL;
+echo getTimeLeft('2024-09-03');
+echo PHP_EOL;
+echo getTimeLeft('2025-04-22');
