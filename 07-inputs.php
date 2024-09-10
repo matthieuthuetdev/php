@@ -10,6 +10,37 @@ function stringLength(string $password): bool
     }
 }
 
-
-
-var_dump(stringLength("mmj"));
+function passwordCheck(string $input): bool
+{
+    $password = str_replace(" ", "", $input);
+    if (strlen($password) >= 9 && preg_match("[a-z]{1,}",$password) && preg_match("[A-Z]{1,}",$password) && preg_match("[1-9]{1,}",$password) && preg_match("[^a-zA-Z0-9]{1,}",$password)) {
+        return true;
+    }
+    return false;
+}
+$input = readline();
+var_dump(passwordCheck($input));
+$input = readline();
+var_dump(passwordCheck($input));
+$input = readline();
+var_dump(passwordCheck($input));
+$input = readline();
+var_dump(passwordCheck($input));
+$input = readline();
+var_dump(passwordCheck($input));
+$input = readline();
+var_dump(passwordCheck($input));
+$input = readline();
+var_dump(passwordCheck($input));
+$input = readline();
+var_dump(passwordCheck($input));
+$input = readline();
+var_dump(passwordCheck($input));
+$input = readline();
+var_dump(passwordCheck($input));
+$input = readline();
+var_dump(passwordCheck($input));
+$input = readline();
+var_dump(passwordCheck($input));
+$input = readline();
+var_dump(passwordCheck($input));
