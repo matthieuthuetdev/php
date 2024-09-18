@@ -1,10 +1,15 @@
 <?php
+require "./model/Pret.php";
+$mensualiteValue = "";
 if (!empty($_GET["valider"]) && !empty($_GET["capitalEmprunter"]) && !empty($_GET["taux"]) && !empty($_GET["rembourcementNbAnnee"])) {
-    $emprunt = new Pret($_GET["capitalEmprunter"],$_GET["taux"],$_GET["rembourcementNbAnnee"])
+    $emprunt = new Pret($_GET["capitalEmprunter"], $_GET["taux"], $_GET["rembourcementNbAnnee"]);
+    $mensualiteValue = $emprunt->calculMensualite();
+    echo $mensualiteValue;
 }
+echo $mensualiteValue;
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr-fr">
 
 <head>
     <meta charset="UTF-8">
@@ -29,11 +34,10 @@ if (!empty($_GET["valider"]) && !empty($_GET["capitalEmprunter"]) && !empty($_GE
                 <input type="number" min="0" id="rembourcementNbAnnee">
             </div>
             <label for="mensualite">Mensualitée</label>
-            <input type="unumber" disabled>
+            <input type="text" value="<?php echo $mensualiteValue; ?>" disabled="true">
             <div>
                 <input type="submit" name="valider" value="valider">
             </div>
-
         </form>
     </div>
 </body>

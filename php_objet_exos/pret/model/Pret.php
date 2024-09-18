@@ -14,8 +14,11 @@ class Pret
         $this->nbmois = $_nbannee * 12;
         $this->mensualite = 0;
     }
-    public function calculMensualite() {
-        $q = (1-(1+$this->tauxInteretMensuel))
-        $this->mensualite = mt_po;
+    public function calculMensualite(): float
+    {
+        $q = (1 - pow(1 + $this->tauxInteretMensuel, -$this->nbmois));
+
+        $this->mensualite = ($this->capitalEmprunter * $this->tauxInteretMensuel) / $q;
+        return round($this->mensualite, 2);
     }
 }
