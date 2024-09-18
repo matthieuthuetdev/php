@@ -1,7 +1,5 @@
 <?php
-function doubler(int $number):int{
-    $number = $number * 2;
-}
-function optenirLeDoubleDunNombreAleatoir():int{
-    $number = doubler(mt_rand(1,10))
-}
+$tableau = ["matthieu","quentin","delphine"];
+var_dump($tableau);
+echo PHP_EOL.PHP_EOL.PHP_EOL.PHP_EOL.PHP_EOL.PHP_EOL.PHP_EOL.PHP_EOL.PHP_EOL.PHP_EOL.PHP_EOL.PHP_EOL;
+var_export($tableau);

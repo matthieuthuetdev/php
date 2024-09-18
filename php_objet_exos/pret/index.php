@@ -1,3 +1,8 @@
+<?php
+if (!empty($_GET["valider"]) && !empty($_GET["capitalEmprunter"]) && !empty($_GET["taux"]) && !empty($_GET["rembourcementNbAnnee"])) {
+    $emprunt = new Pret($_GET["capitalEmprunter"],$_GET["taux"],$_GET["rembourcementNbAnnee"])
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +15,7 @@
 <body>
     <h1>Formulaire de calcule des mensualitée d'un emprunt :</h1>
     <div>
-        <form action="" method="post" enctype="text/plain">
+        <form action="" method="get" enctype="text/plain">
             <div>
                 <label for="capitalEmprunter">Capital emprunté</label>
                 <input type="number" id="capitalEmprunter" min="0" step="0.01" name="capitalEmprunter">
@@ -26,7 +31,7 @@
             <label for="mensualite">Mensualitée</label>
             <input type="unumber" disabled>
             <div>
-                <input type="submit" value="valider">
+                <input type="submit" name="valider" value="valider">
             </div>
 
         </form>
