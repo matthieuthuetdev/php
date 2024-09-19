@@ -2,7 +2,7 @@
 require "./model/Pret.php";
 $mensualiteValue = "";
 if (!empty($_GET["valider"]) && !empty($_GET["capitalEmprunter"]) && !empty($_GET["taux"]) && !empty($_GET["rembourcementNbAnnee"])) {
-    $emprunt = new Pret($_GET["capitalEmprunter"], $_GET["taux"], $_GET["rembourcementNbAnnee"]);
+    $emprunt = new Pret(floatval($_GET["capitalEmprunter"]), floatval($_GET["taux"]), intval($_GET["rembourcementNbAnnee"]));
     $mensualiteValue = $emprunt->calculMensualite();
     echo $mensualiteValue;
 }
@@ -31,7 +31,7 @@ echo $mensualiteValue;
             </div>
             <div>
                 <label for="rembourcementNbAnnee">Durée du remboursement en nombre d'anéex</label>
-                <input type="number" min="0" id="rembourcementNbAnnee">
+                <input type="number" min="0" id="rembourcementNbAnnee" name="rembourcementNbAnnee">
             </div>
             <label for="mensualite">Mensualitée</label>
             <input type="text" value="<?php echo $mensualiteValue; ?>" disabled="true">

@@ -21,4 +21,7 @@ class Pret
         $this->mensualite = ($this->capitalEmprunter * $this->tauxInteretMensuel) / $q;
         return round($this->mensualite, 2);
     }
+    public function tableauAmortissement(){
+        $htmlTable = "<table><thead><th>numero de mois</th><th>intérêt</th>partie Amortissement</th><th>capital restant dû"
+    }
 }
