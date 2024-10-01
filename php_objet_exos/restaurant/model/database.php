@@ -21,10 +21,8 @@ class Database
 
 
         for ($i = 0; $i < count($montab); $i++) {
-            // foreach ($montab as $line) {
-                $restaurantCourrant = $montab[$i];
-                $HTMLTable .= "<tr><td>$restaurantCourrant->nom</td><td>$restaurantCourrant->adresse</td><td>$restaurantCourrant->prix</td><td>$restaurantCourrant->commentaire</td><td>$restaurantCourrant->note</td><td>$restaurantCourrant->visite</td></tr>";
-            // }
+            $restaurantCourrant = $montab[$i];
+            $HTMLTable .= "<tr><td>$restaurantCourrant->nom</td><td>$restaurantCourrant->adresse</td><td>$restaurantCourrant->prix</td><td>$restaurantCourrant->commentaire</td><td>$restaurantCourrant->note</td><td>$restaurantCourrant->visite</td></tr>";
         }
         return $HTMLTable;
     }
