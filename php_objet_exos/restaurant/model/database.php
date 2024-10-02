@@ -13,17 +13,4 @@ class Database
             return null;
         }
     }
-    public function displayRestaurant()
-    {
-        $pdoStatement = $this->BDD->query("SELECT * FROM restaurants", PDO::FETCH_OBJ);
-        $montab = $pdoStatement->fetchAll();
-        $HTMLTable = "<table> <thead><th>Nom</th><th>Adresse</th><th>prix</th><th>Commentaire</th><th>Note</th><th>Visite</th></thead><tbody>";
-
-
-        for ($i = 0; $i < count($montab); $i++) {
-            $restaurantCourrant = $montab[$i];
-            $HTMLTable .= "<tr><td>$restaurantCourrant->nom</td><td>$restaurantCourrant->adresse</td><td>$restaurantCourrant->prix</td><td>$restaurantCourrant->commentaire</td><td>$restaurantCourrant->note</td><td>$restaurantCourrant->visite</td></tr>";
-        }
-        return $HTMLTable;
-    }
 }
