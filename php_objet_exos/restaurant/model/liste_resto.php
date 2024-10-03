@@ -26,13 +26,13 @@ class Liste_resto
         }
         return $HTMLTable;
     }
-    public function seartchResto($_id):array
-    {$rq="SELECT * FROM restaurants WHERE id =:id";
+    public function seartchResto($_id): array
+    {
+        $rq = "SELECT * FROM restaurants WHERE id =:";
         $seartchRequest = $this->connection->prepare($rq);
         $seartchRequest->bindParam(":id", $_id, PDO::PARAM_INT);
         $seartchRequest->execute();
         $resto = $seartchRequest->fetchAll(PDO::FETCH_ASSOC);
         return $resto;
     }
-    private function INFO_TABLE() {}
 }

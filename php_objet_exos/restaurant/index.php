@@ -19,7 +19,7 @@ $restoListe = new Liste_resto($dbConnection);
 
 <body>
     <p>résultat de la connexion a la base de donnée :</p>
-    <?php var_export($restoListe->seartchResto(3)) ?>
+    <?php var_export($restoListe->getColName("restaurants")); ?>
 </body>
 
 </html>
