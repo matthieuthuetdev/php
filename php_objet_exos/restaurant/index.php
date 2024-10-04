@@ -5,7 +5,7 @@ $db = new Database();
 
 $dbConnection = $db->initDatabase();
 $restoListe = new Liste_resto($dbConnection);
-
+$restoListe->listerResto()
 
 ?>
 <!DOCTYPE html>
@@ -18,8 +18,8 @@ $restoListe = new Liste_resto($dbConnection);
 </head>
 
 <body>
-    <p>résultat de la connexion a la base de donnée :</p>
-    <?php var_export($restoListe->getColName("restaurants")); ?>
+    <p>Guide restaurant :</p>
+    <?php echo $restoListe->displayHTMLTable() ?>
 </body>
 
 </html>

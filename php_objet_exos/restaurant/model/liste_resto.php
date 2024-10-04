@@ -12,13 +12,21 @@ class Liste_resto
     {
         $pdoStatement = $this->connection->query("SELECT * FROM restaurants", PDO::FETCH_OBJ);
         $montab = $pdoStatement->fetchAll();
-
         $this->result = $montab;
         return $montab;
     }
+    // public function seartchResto($_nom): array
+    // {
+    //     $rq = "SELECT * FROM restaurants WHERE nom = ':nom'";
+    //     $seartchRequest = $this->connection->prepare($rq);
+    //     $seartchRequest->bindParam(":nom", $_nom, PDO::PARAM_INT);
+    //     $seartchRequest->execute();
+    //     $resto = $seartchRequest->fetchAll(PDO::FETCH_ASSOC);
+    //     $this->result = $resto;
+    //     return $resto;
+    // }
     public function displayHTMLTable()
     {
-        $this->listerResto();
         $HTMLTable = "<table> <thead><th>Nom</th><th>Adresse</th><th>prix</th><th>Commentaire</th><th>Note</th><th>Visite</th></thead><tbody>";
         for ($i = 0; $i < count($this->result); $i++) {
             $restaurantCourrant = $this->result[$i];
@@ -26,13 +34,7 @@ class Liste_resto
         }
         return $HTMLTable;
     }
-    public function seartchResto($_id): array
-    {
-        $rq = "SELECT * FROM restaurants WHERE id =:";
-        $seartchRequest = $this->connection->prepare($rq);
-        $seartchRequest->bindParam(":id", $_id, PDO::PARAM_INT);
-        $seartchRequest->execute();
-        $resto = $seartchRequest->fetchAll(PDO::FETCH_ASSOC);
-        return $resto;
+    public function addResto($newRestaurant){
+        
     }
 }
