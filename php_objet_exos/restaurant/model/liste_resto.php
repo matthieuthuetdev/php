@@ -15,26 +15,25 @@ class Liste_resto
         $this->result = $montab;
         return $montab;
     }
-    // public function seartchResto($_nom): array
-    // {
-    //     $rq = "SELECT * FROM restaurants WHERE nom = ':nom'";
-    //     $seartchRequest = $this->connection->prepare($rq);
-    //     $seartchRequest->bindParam(":nom", $_nom, PDO::PARAM_INT);
-    //     $seartchRequest->execute();
-    //     $resto = $seartchRequest->fetchAll(PDO::FETCH_ASSOC);
-    //     $this->result = $resto;
-    //     return $resto;
-    // }
     public function displayHTMLTable()
     {
-        $HTMLTable = "<table> <thead><th>Nom</th><th>Adresse</th><th>prix</th><th>Commentaire</th><th>Note</th><th>Visite</th></thead><tbody>";
+        $HTMLTable = "<table> <thead><th>Nom</th><th>Adresse</th><th>prix</th><th>Commentaire</th><th>Note</th><th>Visite</th><th>Supprimer</th></thead><tbody>";
         for ($i = 0; $i < count($this->result); $i++) {
             $restaurantCourrant = $this->result[$i];
-            $HTMLTable .= "<tr><td>$restaurantCourrant->nom</td><td>$restaurantCourrant->adresse</td><td>$restaurantCourrant->prix</td><td>$restaurantCourrant->commentaire</td><td>$restaurantCourrant->note</td><td>$restaurantCourrant->visite</td></tr>";
+            $HTMLTable .= "<tr><td>$restaurantCourrant->nom</td><td>$restaurantCourrant->adresse</td><td>$restaurantCourrant->prix</td><td>$restaurantCourrant->commentaire</td><td>$restaurantCourrant->note</td><td>$restaurantCourrant->visite</td><td><a href='index.php?id=$restaurantCourrant->id'>Supprimer</a></td></tr>";
         }
         return $HTMLTable;
     }
-    public function addResto($newRestaurant){
-        
+
+    public function addResto($input)
+    {
+        $rq = $this->connection->prepare('INSERT INTO restaurants (nom, adresse, prix, commentaire, note, visite) VALUES (:nom, :adresse, :prix,:commentaire, :note, :visite)');
+        $rq->bindParam(":nom", $input["nom"], PDO::PARAM_STR);
+        $rq->bindParam(":adresse", $input["adresse"], PDO::PARAM_STR);
+        $rq->bindParam(":prix", $input["prix"], PDO::PARAM_INT);
+        $rq->bindParam(":commentaire", $input["commentaire"], PDO::PARAM_STR);
+        $rq->bindParam(":note", $input["note"], PDO::PARAM_INT);
+        $rq->bindParam(":visite", $input["visite"], PDO::PARAM_STR);
+        $rq->execute();
     }
 }
