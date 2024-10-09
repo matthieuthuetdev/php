@@ -6,26 +6,18 @@ $db = new Database();
 $dbConnection = $db->initDatabase();
 $restoListe = new Liste_resto($dbConnection);
 $restoListe->listerResto();
-if(isset($_POST["add"])){
-    var_dump($_POST);
-    $restoListe->addResto($_POST);
+
+if (isset($_GET["p"])) {
+    $p = $_GET["p"];
+} else {
+    $p = "home";
 }
-?>
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guide restaurant</title>
-    <link rel="stylesheet" href="./css/style.css">
-</head>
-
-<body>
-    <h1>Guide restaurant :</h1>
-    <?php echo $restoListe->displayHTMLTable() ?>
-    <a href="./addrestaurant.html" class="btn">Ajouter</a>
-    
-</body>
-
-</html>
+ob_start();
+if ($p != "base" && !strpos($p, ".") && !strpos($p, "/") && file_exists("./vue/" . $p . ".php")) {
+    require "./vue/" . $p . ".php";
+} else {
+    require "./vue/404.php";
+}
+$content = ob_get_clean();
+require "./vue/base.php";
